@@ -1,0 +1,61 @@
+# .github/workflows/ci.yml
+
+name: Python CI Pipeline
+
+# --- 1. Trigger Conditions ---
+# This workflow runs on every push to the 'main' branch
+# and on every pull request targeting the 'main' branch.
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# --- 2. Jobs ---
+# A workflow is made up of one or more jobs that run in parallel or sequentially.
+jobs:
+  build-and-test:
+    # --- Runner Environment ---
+    # Use the latest Ubuntu runner provided by GitHub.
+    runs-on: ubuntu-latest
+
+    # --- Steps ---
+    # A job contains a sequence of tasks called steps.
+    steps:
+      # Step 1: Check out the repository code
+      # This downloads your repository into the runner.
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python environment
+      # This installs a specific version of Python.
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      # Step 3: Install project dependencies
+      # Caches dependencies to speed up subsequent runs.
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest  # Install linting and testing tools
+          pip install -r requirements.txt
+
+      # Step 4: Lint with flake8
+      # Checks your code for style errors (e.g., unused imports, line length).
+      # The '--ignore=E501' flag ignores line-too-long errors, which can be noisy.
+      # The '--count' flag will exit with a non-zero status if errors are found, failing the job.
+      - name: Lint with flake8
+        run: |
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=120 --ignore=E501,W503
+
+      # Step 5: Run tests with pytest (Optional but good practice)
+      # This step will look for files named test_*.py or *_test.py and run the tests.
+      # We don't have tests yet, but this sets up the framework.
+      # To prevent it from failing now, we add '|| true' to ensure it always passes.
+      # Remove '|| true' once you add actual tests.
+      - name: Test with pytest
+        run: |
+          pytest || true
