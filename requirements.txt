@@ -1,8 +1,9 @@
-# requirements.txt
-
-# Core libraries
-pandas
+# --- Core LangChain Packages ---
 langchain
+langchain-core
+langchain-community # <-- ADD THIS
+
+# --- Other Libraries ---
 sentence-transformers
 chromadb
 transformers
@@ -11,16 +12,11 @@ accelerate
 gradio
 python-dotenv
 
-# Visualization libraries
-matplotlib
-seaborn
-jupyterlab
+# Data handling
+polars
+pyarrow
+pandas
 
-# --- Dependency Pins ---
-# Pin NumPy to a version < 2.0 to maintain compatibility with older
-# compiled libraries like some versions of matplotlib.
+# --- Dependency Pins for stability ---
 numpy<2.0
-
-# Pin packaging to a version < 25 to satisfy the requirement from
-# langchain-core.
 packaging<25
