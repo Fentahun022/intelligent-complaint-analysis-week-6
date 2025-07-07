@@ -1,0 +1,26 @@
+# requirements.txt
+
+# Core libraries
+pandas
+langchain
+sentence-transformers
+chromadb
+transformers
+torch
+accelerate
+gradio
+python-dotenv
+
+# Visualization libraries
+matplotlib
+seaborn
+jupyterlab
+
+# --- Dependency Pins ---
+# Pin NumPy to a version < 2.0 to maintain compatibility with older
+# compiled libraries like some versions of matplotlib.
+numpy<2.0
+
+# Pin packaging to a version < 25 to satisfy the requirement from
+# langchain-core.
+packaging<25

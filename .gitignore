@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.env
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+
+# Data & Models
+data/*.csv
+!data/.gitkeep
+vector_store/
+!vector_store/.gitkeep
+
+# IDEs
+.vscode/
+.idea/
