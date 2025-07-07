@@ -1,4 +1,4 @@
-name: CI Pipeline for Credit Risk Model
+name: CI Pipeline for Complaint analysis
 
 on:
   push:
