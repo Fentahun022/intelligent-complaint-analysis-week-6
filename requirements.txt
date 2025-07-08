@@ -11,6 +11,8 @@ torch
 accelerate
 gradio
 python-dotenv
+langchain-huggingface  # <-- Add this
+langchain-chroma 
 
 # Data handling
 polars

@@ -11,7 +11,7 @@ VECTOR_STORE_PATH = "vector_store"
 
 # --- Models ---
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
-LLM_MODEL_NAME = "HuggingFaceH4/zephyr-7b-beta"
+LLM_MODEL_NAME = "google/flan-t5-base"
 
 # --- Text Chunking ---
 CHUNK_SIZE = 1000
