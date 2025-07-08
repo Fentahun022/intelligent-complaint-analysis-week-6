@@ -1,5 +1,3 @@
-# app.py
-
 import gradio as gr
 from src.rag_pipeline import RAGPipeline
 import os
